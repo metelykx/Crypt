@@ -13,6 +13,8 @@ struct StartView: View {
     private var textColor: Color {
         colorScheme == .dark ? .white : .black
     }
+    @State var name: String = ""
+    @State var password: String = ""
     var body: some View {
         ZStack {
             
@@ -33,6 +35,8 @@ struct StartView: View {
                             .frame(width: geometry.size.width / 10, height: geometry.size.height / 20)
                             .foregroundStyle(.yellow)
                     }.frame(width: geometry.size.width, height: geometry.size.height)
+                    
+                    
                 }
             }
         }
