@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct StartView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    private var textColor: Color {
+        colorScheme == .dark ? .white : .black
+    }
     var body: some View {
-        Text("alala")
         ZStack {
             
             GeometryReader { geometry in
@@ -17,7 +20,16 @@ struct StartView: View {
                 Circle2View(size: geometry.size)
                 
                 HStack {
-                    Text("Hello! I'm Crypto. Who are you?")
+                    Text("Crypto")
+                        .font(.title)
+                        .bold()
+                        .fontWidth(.compressed)
+                        .foregroundStyle(textColor)
+                    
+                    Image(systemName: "bitcoinsign.bank.building.fill")
+                        .resizable()
+                        .frame(width: geometry.size.width / 10, height: geometry.size.height / 20)
+                        .foregroundStyle(.yellow)
                 }
             }
         }
