@@ -23,14 +23,15 @@ struct AuthView: View {
     
     var body: some View {
         
+        VStack {
+            
+            Text("Welcome to Crypt")
+                .font(.title)
+                .bold()
+                .fontWidth(.compressed)
+                .foregroundStyle(.primary)
+            
             VStack {
-                
-                Text("Welcome to Crypt")
-                    .font(.title)
-                    .bold()
-                    .fontWidth(.compressed)
-                    .foregroundStyle(.primary)
-                
                 HStack {
                     Image(systemName: "person.fill")
                     TextField("Name", text: $name) }.padding(.bottom)
@@ -52,7 +53,7 @@ struct AuthView: View {
             }
         }
     }
-
+}
 #Preview {
     AuthView()
 }
