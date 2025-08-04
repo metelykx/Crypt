@@ -46,7 +46,10 @@ struct AuthView: View {
                             HStack {
                                 Image(systemName: "person.fill")
                                     .foregroundStyle(colors)
-                                TextField("Name", text: $name)
+                                Text("Name")
+                                    .foregroundStyle(colors)
+                                    .font(.headline)
+                                TextField("", text: $name)
                                 
                                 
                             }.padding(.bottom)
