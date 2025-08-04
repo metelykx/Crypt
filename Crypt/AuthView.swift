@@ -32,14 +32,7 @@ struct AuthView: View {
         ZStack {
             GeometryReader { geometry in
                 
-                Circle()
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 2)
-                    .rotationEffect(.init(degrees: 45))
-                    .offset(
-                        x: -geometry.size.width / 4,
-                        y: -geometry.size.height / 4
-                    )
+                Circle1View(size: geometry.size)
                 
                 Circle()
                     .fill(Color.gray.opacity(0.2))
@@ -119,4 +112,20 @@ struct AuthView: View {
     AuthView()
        
 }
+
+
+struct Circle1View: View {
+    let size: CGSize
+    var body: some View {
+        Circle()
+            .fill(Color.gray.opacity(0.2))
+            .frame(width: size.width / 2, height: size.height / 2)
+            .rotationEffect(.init(degrees: 45))
+            .offset(
+                x: -size.width / 4,
+                y: -size.height / 4
+            )
+    }
+}
+
 
