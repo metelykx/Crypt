@@ -32,16 +32,9 @@ struct AuthView: View {
         ZStack {
             GeometryReader { geometry in
                 
+                //MARK: -Circles
                 Circle1View(size: geometry.size)
-                
-                Circle()
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 2)
-                    .rotationEffect(.init(degrees: 45))
-                    .offset(
-                        x: geometry.size.width / 1.6,
-                        y: geometry.size.height / 1.3
-                    )
+                Circle2View(size: geometry.size)
                     
                 VStack {
                     Spacer()
@@ -75,7 +68,10 @@ struct AuthView: View {
                                 Text("Password")
                                     .foregroundStyle(colors)
                                     .font(.headline)
-                                SecureField("", text: $password) }.padding(.bottom)
+                                SecureField("", text: $password)
+                                
+                            }
+                    .padding(.bottom)
                                 .padding(.horizontal)
                                 .padding(.leading)
                                 .padding(.trailing)
@@ -114,18 +110,8 @@ struct AuthView: View {
 }
 
 
-struct Circle1View: View {
-    let size: CGSize
-    var body: some View {
-        Circle()
-            .fill(Color.gray.opacity(0.2))
-            .frame(width: size.width / 2, height: size.height / 2)
-            .rotationEffect(.init(degrees: 45))
-            .offset(
-                x: -size.width / 4,
-                y: -size.height / 4
-            )
-    }
-}
+
+
+
 
 
