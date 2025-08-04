@@ -39,7 +39,7 @@ struct StartView: View {
                     ZStack{
                         Rectangle()
                             .fill(Color.gray.opacity(0.2))
-                            .frame(width: geometry.size.width/1.1, height: geometry.size.height/4)
+                            .frame(width: geometry.size.width/1.1, height: geometry.size.height/6)
                             .cornerRadius(20)
                         
                         VStack {
