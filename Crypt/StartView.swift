@@ -75,9 +75,7 @@ struct StartView: View {
                                 .padding(.horizontal)
                                 .padding(.leading)
                                 .padding(.trailing)
-                                
-                               
-
+                          
                             }
                            
                         }
@@ -85,7 +83,7 @@ struct StartView: View {
                             AuthView()
                         } label: {
                             Text("Sign Up")
-                        }
+                        }.padding(.top, -geometry.size.height / 50)
                         .padding(.top)
                         
                         Text("Mistake")
@@ -100,7 +98,6 @@ struct StartView: View {
                                 .font(.headline)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, geometry.size.height * 0.03)
-                         
                         }
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(12)
