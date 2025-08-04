@@ -22,17 +22,16 @@ struct AuthView: View {
     @State var repeatPass: String = ""
     
     var body: some View {
-        
-        VStack {
-            
-            
-            TextField("Name", text: $name)
-            TextField("Password", text: $password)
-            TextField("Repeat Password", text: $repeatPass)
+        GeometryReader { geometry in
+            VStack {
+                
+                TextField("Name", text: $name)
+                TextField("Password", text: $password)
+                TextField("Repeat Password", text: $repeatPass)
+            }
         }
     }
 }
-
 #Preview {
     AuthView()
 }
