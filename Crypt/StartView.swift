@@ -105,7 +105,7 @@ struct StartView: View {
                         .padding(.top, geometry.size.height * 0.03)
                         
                         Spacer()
-                    }
+                    }.padding(.top, -geometry.size.height * 0.2)
                     
                 }
                 
