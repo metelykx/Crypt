@@ -31,10 +31,10 @@ struct AuthView: View {
                     .fontWidth(.compressed)
                     .foregroundStyle(.primary)
                 
-                
-                TextField("Name", text: $name)
-                TextField("Password", text: $password)
-                TextField("Repeat Password", text: $repeatPass)
+                HStack {
+                    TextField("Name", text: $name) }
+                HStack { TextField("Password", text: $password) }
+                HStack { TextField("Repeat Password", text: $repeatPass) }
             }.frame(
                 width: geometry.size.width,
                 height: geometry.size.height / 2,
