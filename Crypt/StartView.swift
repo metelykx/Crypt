@@ -10,7 +10,7 @@ import SwiftUI
 struct StartView: View {
     
     @Environment(\.colorScheme) private var colorScheme
-    private var textColor: Color {
+    private var colors: Color {
         colorScheme == .dark ? .white : .black
     }
     @State var name: String = ""
@@ -29,15 +29,49 @@ struct StartView: View {
                             .font(.title)
                             .bold()
                             .fontWidth(.compressed)
-                            .foregroundStyle(textColor)
+                            .foregroundStyle(colors)
                         
                         Image(systemName: "bitcoinsign.bank.building.fill")
                             .resizable()
                             .frame(width: geometry.size.width / 10, height: geometry.size.height / 20)
                             .foregroundStyle(.yellow)
-                    }.frame(width: geometry.size.width, height: geometry.size.height)
-                    
-                    
+                    }
+                    ZStack{
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.2))
+                            .frame(width: geometry.size.width/1.1, height: geometry.size.height/4)
+                            .cornerRadius(20)
+                        
+                        VStack {
+                            HStack {
+                                Image(systemName: "person.fill")
+                                    .foregroundStyle(colors)
+                                Text("Name")
+                                    .foregroundStyle(colors)
+                                    .font(.headline)
+                                TextField("", text: $name)
+                                
+                                
+                            }.padding(.bottom)
+                                .padding(.horizontal)
+                                .padding(.leading)
+                                .padding(.trailing)
+                            
+                            
+                            HStack {
+                                Image(systemName: "lock.fill").foregroundStyle(colors)
+                                Text("Password")
+                                    .foregroundStyle(colors)
+                                    .font(.headline)
+                                SecureField("", text: $password)
+                                
+                            }
+                            .padding(.bottom)
+                            .padding(.horizontal)
+                            .padding(.leading)
+                            .padding(.trailing)
+                        }
+                    }
                 }
             }
         }
