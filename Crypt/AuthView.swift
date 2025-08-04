@@ -36,7 +36,9 @@ struct AuthView: View {
                     TextField("Name", text: $name) }
                 
                 
-                HStack { SecureField("Password", text: $password) }
+                HStack {
+                    Image(systemName: "lock.fill")
+                    SecureField("Password", text: $password) }
                 
                 
                 
