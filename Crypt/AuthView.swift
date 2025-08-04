@@ -24,10 +24,12 @@ struct AuthView: View {
     @State var repeatPass: String = ""
     @State var isValid: Bool = false
     
+    //-MARK: View
     var body: some View {
         ZStack {
             GeometryReader { geometry in
                 VStack {
+                    Spacer()
                     HeaderView(sizes: geometry.size)
                     ZStack {
                         
@@ -57,8 +59,6 @@ struct AuthView: View {
                                 .padding(.trailing)
                             
                             
-                            
-                            
                             HStack {
                                 Image(systemName: "lock.circle.fill")
                                 SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
@@ -67,16 +67,14 @@ struct AuthView: View {
                                 .padding(.trailing)
                             
                             
-                           
-
-                            
-                            
                         }
                     }
-                    
+                    Text("Mistake")
                     ButtonView(size: geometry.size)
                     
-                }
+                    Spacer()
+                }.padding(.bottom, geometry.size.height * 0.15)
+        
             }
         }
     }
