@@ -69,7 +69,10 @@ struct AuthView: View {
                             
                         }
                     }
+                    //-MARK: Mistakes
                     Text("Mistake")
+                        .font(.callout)
+                        .padding(.top)
                     ButtonView(size: geometry.size)
                     
                     Spacer()
