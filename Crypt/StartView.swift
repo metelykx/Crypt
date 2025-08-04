@@ -15,6 +15,10 @@ struct StartView: View {
             GeometryReader { geometry in
                 Circle1View(size: geometry.size)
                 Circle2View(size: geometry.size)
+                
+                HStack {
+                    Text("Hello! I'm Crypto. Who are you?")
+                }
             }
         }
     }
