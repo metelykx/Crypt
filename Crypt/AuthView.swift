@@ -33,19 +33,19 @@ struct AuthView: View {
                 
                 HStack {
                     Image(systemName: "person.fill")
-                    TextField("Name", text: $name) }
+                    TextField("Name", text: $name) }.padding(.bottom)
                 
                 
                 HStack {
                     Image(systemName: "lock.fill")
-                    SecureField("Password", text: $password) }
+                    SecureField("Password", text: $password) }.padding(.bottom)
                 
                 
                 
                 
                 HStack {
                     Image(systemName: "lock.circle.fill")
-                    SecureField("Repeat Password", text: $repeatPass) }
+                    SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
                 
                 
                 
