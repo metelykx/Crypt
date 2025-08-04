@@ -19,8 +19,9 @@ struct StartView: View {
             GeometryReader { geometry in
                 Circle1View(size: geometry.size)
                 Circle2View(size: geometry.size)
-                VStack {
-                    HStack {
+                
+                VStack(alignment: .center){
+                    HStack(alignment: .center) {
                         Text("Crypto")
                             .font(.title)
                             .bold()
@@ -31,7 +32,7 @@ struct StartView: View {
                             .resizable()
                             .frame(width: geometry.size.width / 10, height: geometry.size.height / 20)
                             .foregroundStyle(.yellow)
-                    }
+                    }.frame(width: geometry.size.width, height: geometry.size.height)
                 }
             }
         }
