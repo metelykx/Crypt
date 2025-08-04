@@ -19,7 +19,8 @@ struct HeaderView: View {
             Image(systemName: "bitcoinsign.bank.building.fill")
                 .resizable()
                 .frame(width: sizes.width / 10, height: sizes.height / 20)
-                .foregroundStyle(.primary)
+                .foregroundStyle(.yellow)
+                
         }
     }
 }
