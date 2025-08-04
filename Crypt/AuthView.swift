@@ -43,7 +43,9 @@ struct AuthView: View {
                 
                 
                 
-                HStack { SecureField("Repeat Password", text: $repeatPass) }
+                HStack {
+                    Image(systemName: "lock.circle.fill")
+                    SecureField("Repeat Password", text: $repeatPass) }
                 
                 
                 
