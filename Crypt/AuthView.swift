@@ -22,7 +22,7 @@ struct AuthView: View {
     @State var repeatPass: String = ""
     
     var body: some View {
-        GeometryReader { geometry in
+        
             VStack {
                 
                 Text("Welcome to Crypt")
@@ -49,14 +49,10 @@ struct AuthView: View {
                 
                 
                 
-            }.frame(
-                width: geometry.size.width,
-                height: geometry.size.height / 2,
-                alignment: .center
-            )
+            }
         }
     }
-}
+
 #Preview {
     AuthView()
 }
