@@ -25,12 +25,18 @@ struct AuthView: View {
         ZStack {
             GeometryReader { geometry in
                 VStack {
-                    
-                    Text("Welcome to Crypt")
-                        .font(.title)
-                        .bold()
-                        .fontWidth(.compressed)
-                        .foregroundStyle(.primary)
+                    HStack {
+                        Text("Welcome to Crypt")
+                            .font(.title)
+                            .bold()
+                            .fontWidth(.compressed)
+                            .foregroundStyle(.primary)
+                        
+                        Image(systemName: "bitcoinsign.bank.building.fill")
+                            .resizable()
+                            .frame(width: geometry.size.width / 10, height: geometry.size.height / 20)
+                            .foregroundStyle(.primary)
+                    }
                     ZStack {
                         
                         Rectangle()
