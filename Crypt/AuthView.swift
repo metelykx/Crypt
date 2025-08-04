@@ -30,36 +30,37 @@ struct AuthView: View {
                 .bold()
                 .fontWidth(.compressed)
                 .foregroundStyle(.primary)
-            
-            VStack {
-                HStack {
-                    Image(systemName: "person.fill")
-                    TextField("Name", text: $name) }.padding(.bottom)
-                    .padding(.horizontal)
-                    .padding(.leading)
-                    .padding(.trailing)
-                
-                
-                HStack {
-                    Image(systemName: "lock.fill")
-                    SecureField("Password", text: $password) }.padding(.bottom)
-                    .padding(.horizontal)
-                    .padding(.leading)
-                    .padding(.trailing)
-                
-                
-                
-                
-                HStack {
-                    Image(systemName: "lock.circle.fill")
-                    SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
-                    .padding(.horizontal)
-                    .padding(.leading)
-                    .padding(.trailing)
+            ZStack {
+                VStack {
+                    HStack {
+                        Image(systemName: "person.fill")
+                        TextField("Name", text: $name) }.padding(.bottom)
+                        .padding(.horizontal)
+                        .padding(.leading)
+                        .padding(.trailing)
                     
-                
-                
-                
+                    
+                    HStack {
+                        Image(systemName: "lock.fill")
+                        SecureField("Password", text: $password) }.padding(.bottom)
+                        .padding(.horizontal)
+                        .padding(.leading)
+                        .padding(.trailing)
+                    
+                    
+                    
+                    
+                    HStack {
+                        Image(systemName: "lock.circle.fill")
+                        SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
+                        .padding(.horizontal)
+                        .padding(.leading)
+                        .padding(.trailing)
+                    
+                    
+                    
+                    
+                }
             }
         }
     }
