@@ -41,7 +41,7 @@ struct AuthView: View {
                 
                 
                 
-                HStack { TextField("Repeat Password", text: $repeatPass) }
+                HStack { SecureField("Repeat Password", text: $repeatPass) }
                 
                 
                 
