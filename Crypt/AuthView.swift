@@ -86,6 +86,7 @@ struct AuthView: View {
                     Text("Mistake")
                         .font(.callout)
                         .padding(.top)
+                        .foregroundStyle(colors)
                     ButtonView(size: geometry.size)
                     
                     Spacer()
