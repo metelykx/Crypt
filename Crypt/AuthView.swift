@@ -24,7 +24,7 @@ struct AuthView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                
+                Text("Welcome to Crypto")
                 TextField("Name", text: $name)
                 TextField("Password", text: $password)
                 TextField("Repeat Password", text: $repeatPass)
