@@ -60,7 +60,10 @@ struct AuthView: View {
                             
                             HStack {
                                 Image(systemName: "lock.fill").foregroundStyle(colors)
-                                SecureField("Password", text: $password) }.padding(.bottom)
+                                Text("Password")
+                                    .foregroundStyle(colors)
+                                    .font(.headline)
+                                SecureField("", text: $password) }.padding(.bottom)
                                 .padding(.horizontal)
                                 .padding(.leading)
                                 .padding(.trailing)
