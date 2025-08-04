@@ -47,6 +47,10 @@ struct AuthView: View {
                 HStack {
                     Image(systemName: "lock.circle.fill")
                     SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
+                    .padding(.horizontal)
+                    .padding(.leading)
+                    .padding(.trailing)
+                    
                 
                 
                 
