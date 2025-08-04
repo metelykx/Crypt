@@ -32,9 +32,19 @@ struct AuthView: View {
                     .foregroundStyle(.primary)
                 
                 HStack {
+                    Image(systemName: "person.fill")
                     TextField("Name", text: $name) }
-                HStack { TextField("Password", text: $password) }
+                
+                
+                HStack { SecureField("Password", text: $password) }
+                
+                
+                
+                
                 HStack { TextField("Repeat Password", text: $repeatPass) }
+                
+                
+                
             }.frame(
                 width: geometry.size.width,
                 height: geometry.size.height / 2,
