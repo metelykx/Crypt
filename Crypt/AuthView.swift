@@ -35,11 +35,17 @@ struct AuthView: View {
                 HStack {
                     Image(systemName: "person.fill")
                     TextField("Name", text: $name) }.padding(.bottom)
+                    .padding(.horizontal)
+                    .padding(.leading)
+                    .padding(.trailing)
                 
                 
                 HStack {
                     Image(systemName: "lock.fill")
                     SecureField("Password", text: $password) }.padding(.bottom)
+                    .padding(.horizontal)
+                    .padding(.leading)
+                    .padding(.trailing)
                 
                 
                 
