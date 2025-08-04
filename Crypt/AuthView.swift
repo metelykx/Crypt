@@ -20,6 +20,7 @@ struct AuthView: View {
     @State var name: String = ""
     @State var password: String = ""
     @State var repeatPass: String = ""
+    @State var isValid: Bool = false
     
     var body: some View {
         ZStack {
@@ -64,10 +65,19 @@ struct AuthView: View {
                                 .padding(.trailing)
                             
                             
+                           
+
                             
                             
                         }
                     }
+                    
+                    Button {
+                        print("edf")
+                    } label: {
+                        Text("Sign Up")
+                    }
+                    
                 }
             }
         }
