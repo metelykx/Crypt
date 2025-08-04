@@ -22,44 +22,51 @@ struct AuthView: View {
     @State var repeatPass: String = ""
     
     var body: some View {
-        
-        VStack {
-            
-            Text("Welcome to Crypt")
-                .font(.title)
-                .bold()
-                .fontWidth(.compressed)
-                .foregroundStyle(.primary)
-            ZStack {
-                VStack {
-                    HStack {
-                        Image(systemName: "person.fill")
-                        TextField("Name", text: $name) }.padding(.bottom)
-                        .padding(.horizontal)
-                        .padding(.leading)
-                        .padding(.trailing)
+        GeometryReader { geometry in
+            VStack {
+                
+                Text("Welcome to Crypt")
+                    .font(.title)
+                    .bold()
+                    .fontWidth(.compressed)
+                    .foregroundStyle(.primary)
+                ZStack {
+                    
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.2))
+                        .frame(width: geometry.size.width/1.1, height: geometry.size.height/4)
                     
                     
-                    HStack {
-                        Image(systemName: "lock.fill")
-                        SecureField("Password", text: $password) }.padding(.bottom)
-                        .padding(.horizontal)
-                        .padding(.leading)
-                        .padding(.trailing)
-                    
-                    
-                    
-                    
-                    HStack {
-                        Image(systemName: "lock.circle.fill")
-                        SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
-                        .padding(.horizontal)
-                        .padding(.leading)
-                        .padding(.trailing)
-                    
-                    
-                    
-                    
+                    VStack {
+                        HStack {
+                            Image(systemName: "person.fill")
+                            TextField("Name", text: $name) }.padding(.bottom)
+                            .padding(.horizontal)
+                            .padding(.leading)
+                            .padding(.trailing)
+                        
+                        
+                        HStack {
+                            Image(systemName: "lock.fill")
+                            SecureField("Password", text: $password) }.padding(.bottom)
+                            .padding(.horizontal)
+                            .padding(.leading)
+                            .padding(.trailing)
+                        
+                        
+                        
+                        
+                        HStack {
+                            Image(systemName: "lock.circle.fill")
+                            SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
+                            .padding(.horizontal)
+                            .padding(.leading)
+                            .padding(.trailing)
+                        
+                        
+                        
+                        
+                    }
                 }
             }
         }
