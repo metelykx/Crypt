@@ -16,6 +16,7 @@ import CoreData
 struct AuthView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.colorScheme) var colorScreen
     
     @State var name: String = ""
     @State var password: String = ""
@@ -76,7 +77,8 @@ struct AuthView: View {
                         print("edf")
                     } label: {
                         Text("Sign Up")
-                    }
+                            .foregroundStyle()
+                    }.foregroundStyle(.primary)
                     
                 }
             }
