@@ -17,7 +17,10 @@ struct AuthView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    
+    @Environment(\.colorScheme) private var colorScheme
+    private var colors: Color {
+        colorScheme == .dark ? .black : .white
+    }
     
     @State var name: String = ""
     @State var password: String = ""
@@ -42,6 +45,7 @@ struct AuthView: View {
                         VStack {
                             HStack {
                                 Image(systemName: "person.fill")
+                                    .foregroundStyle(colors)
                                 TextField("Name", text: $name)
                                 
                                 
@@ -52,7 +56,7 @@ struct AuthView: View {
                             
                             
                             HStack {
-                                Image(systemName: "lock.fill")
+                                Image(systemName: "lock.fill").foregroundStyle(colors)
                                 SecureField("Password", text: $password) }.padding(.bottom)
                                 .padding(.horizontal)
                                 .padding(.leading)
@@ -60,7 +64,7 @@ struct AuthView: View {
                             
                             
                             HStack {
-                                Image(systemName: "lock.circle.fill")
+                                Image(systemName: "lock.circle.fill").foregroundStyle(colors)
                                 SecureField("Repeat Password", text: $repeatPass) }.padding(.bottom)
                                 .padding(.horizontal)
                                 .padding(.leading)
@@ -84,5 +88,6 @@ struct AuthView: View {
 }
 #Preview {
     AuthView()
+       
 }
 

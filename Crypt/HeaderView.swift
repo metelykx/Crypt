@@ -10,9 +10,7 @@ struct HeaderView: View {
     let sizes: CGSize
     @Environment(\.colorScheme) private var colorScheme
     
-    private var textColor: Color {
-        colorScheme == .dark ? .white : .black
-    }
+   
     var body: some View {
         HStack {
             Text("Welcome to Crypt")
@@ -28,4 +26,7 @@ struct HeaderView: View {
                 
         }
     }
+    private var textColor: Color {
+            colorScheme == .dark ? .black : .white
+        }
 }
