@@ -29,6 +29,7 @@ struct StartView: View {
                     Circle2View(size: geometry.size)
                     
                     VStack(alignment: .center){
+                        Spacer()
                         HStack(alignment: .center) {
                             Text("Crypto")
                                 .font(.title)
@@ -87,8 +88,30 @@ struct StartView: View {
                         }
                         .padding(.top)
                         
+                        Text("Mistake")
+                            .font(.callout)
+                            .padding(.top)
+                            .foregroundStyle(colors)
+                        
+                        Button {
+                            print("Sign Up tapped")
+                        } label: {
+                            Text("Sign In")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, geometry.size.height * 0.03)
+                         
+                        }
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(12)
+                        .padding(.horizontal, geometry.size.width * 0.2)
+                        .padding(.top, geometry.size.height * 0.03)
+                        
+                        Spacer()
                     }
+                    
                 }
+                
             }
         }
     }
