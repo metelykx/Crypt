@@ -24,6 +24,7 @@ struct AuthView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                
                 Text("Welcome to Crypt")
                     .font(.title)
                     .bold()
@@ -34,7 +35,11 @@ struct AuthView: View {
                 TextField("Name", text: $name)
                 TextField("Password", text: $password)
                 TextField("Repeat Password", text: $repeatPass)
-            }
+            }.frame(
+                width: geometry.size.width,
+                height: geometry.size.height / 2,
+                alignment: .center
+            )
         }
     }
 }
