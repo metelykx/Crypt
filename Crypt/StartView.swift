@@ -75,9 +75,18 @@ struct StartView: View {
                                 .padding(.leading)
                                 .padding(.trailing)
                                 
-                                
+                               
+
                             }
+                           
                         }
+                        NavigationLink {
+                            AuthView()
+                        } label: {
+                            Text("Sign Up")
+                        }
+                        .padding(.top)
+                        
                     }
                 }
             }
