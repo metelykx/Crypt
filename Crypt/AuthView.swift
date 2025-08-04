@@ -40,6 +40,15 @@ struct AuthView: View {
                         x: -geometry.size.width / 4,
                         y: -geometry.size.height / 4
                     )
+                
+                Circle()
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 2)
+                    .rotationEffect(.init(degrees: 45))
+                    .offset(
+                        x: geometry.size.width / 1.6,
+                        y: geometry.size.height / 1.3
+                    )
                     
                 VStack {
                     Spacer()
