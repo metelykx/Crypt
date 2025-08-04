@@ -15,6 +15,7 @@ struct StartView: View {
     }
     @State var name: String = ""
     @State var password: String = ""
+    @Environment(\.managedObjectContext) var managedObjectContext
     var body: some View {
         ZStack {
             
