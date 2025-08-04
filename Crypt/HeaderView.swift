@@ -8,13 +8,18 @@ import SwiftUI
 
 struct HeaderView: View {
     let sizes: CGSize
+    @Environment(\.colorScheme) private var colorScheme
+    
+    private var textColor: Color {
+        colorScheme == .dark ? .white : .black
+    }
     var body: some View {
         HStack {
             Text("Welcome to Crypt")
                 .font(.title)
                 .bold()
                 .fontWidth(.compressed)
-                .foregroundStyle(.primary)
+                .foregroundStyle(textColor)
             
             Image(systemName: "bitcoinsign.bank.building.fill")
                 .resizable()

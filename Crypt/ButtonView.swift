@@ -18,6 +18,7 @@ struct ButtonView: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, size.height * 0.03)
+         
         }
         .background(Color.gray.opacity(0.2))
         .cornerRadius(12)

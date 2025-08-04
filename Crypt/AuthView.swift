@@ -79,7 +79,7 @@ struct AuthView: View {
                 }.padding(.bottom, geometry.size.height * 0.15)
         
             }
-        }
+        }.background(.primary)
     }
 }
 #Preview {
