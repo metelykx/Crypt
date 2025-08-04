@@ -31,6 +31,16 @@ struct AuthView: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
+                
+                Circle()
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 2)
+                    .rotationEffect(.init(degrees: 45))
+                    .offset(
+                        x: -geometry.size.width / 4,
+                        y: -geometry.size.height / 4
+                    )
+                    
                 VStack {
                     Spacer()
                     HeaderView(sizes: geometry.size)
