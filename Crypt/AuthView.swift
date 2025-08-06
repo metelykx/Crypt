@@ -129,6 +129,11 @@ struct AuthView: View {
             isError = "Please fill in all fields"
             return false
         }
+        
+        guard password == repeatPass else {
+            isError = "Passwords do not match"
+            return false
+        }
     }
 }
 #Preview {
