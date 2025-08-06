@@ -16,9 +16,7 @@ struct AuthView: View {
     @State private var isError: Bool = false
     @State private var errorMessage: String = ""
     
-    private var colors: Color {
-        colorScheme == .dark ? .white : .black
-    }
+   
     
     private var colorsText: Color {
         colorScheme == .dark ? .black : .white
