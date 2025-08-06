@@ -12,8 +12,11 @@ struct MainView: View {
         TabView {
             StaticView()
                 .tabItem {
-                    Image(systemName: "arrow.down.left.arrow.up.right.circle.fill")
+                    Label("Statistics", systemImage: "arrow.down.left.arrow.up.right.circle.fill")
+                    
                 }
+            
+            
         }
     }
 }
