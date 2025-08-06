@@ -45,7 +45,7 @@ struct AuthView: View {
                             .frame(width: geometry.size.width/1.1, height: geometry.size.height/4)
                             .cornerRadius(20)
                         
-                        VStack {
+                        VStack(spacing: 15) {
                             HStack {
                                 Image(systemName: "person.fill")
                                     .foregroundStyle(colorsText)
@@ -58,6 +58,7 @@ struct AuthView: View {
                                     }
                                     
                             }
+                            .padding(.top, geometry.size.height / 30)
                             .padding(.bottom)
                             .padding(.horizontal)
                             
@@ -94,6 +95,7 @@ struct AuthView: View {
                             .padding(.leading)
                             .padding(.trailing)
                     }
+                    
                     
                     // MARK: - Error Display
                     if isError {
