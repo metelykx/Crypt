@@ -9,9 +9,12 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        TabView({
+        TabView {
             StaticView()
-        })
+                .tabItem {
+                    Image(systemName: "arrow.down.left.arrow.up.right.circle.fill")
+                }
+        }
     }
 }
 
