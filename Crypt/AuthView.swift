@@ -107,6 +107,7 @@ struct AuthView: View {
         let newItem = Item(context: managedObjectContext)
         
         newItem.name = name
+        newItem.password = password
     }
 }
 #Preview {
