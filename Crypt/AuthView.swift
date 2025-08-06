@@ -104,6 +104,8 @@ struct AuthView: View {
         }.background(.primary)
     }
     private func authorization() {
+        let newItem = Item(context: managedObjectContext)
+        
         
     }
 }
