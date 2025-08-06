@@ -124,8 +124,11 @@ struct AuthView: View {
         }
     }
     
-    private func validatePassword() {
-        
+    private func validatePassword() -> Bool {
+        guard !password.isEmpty && !repeatPass.isEmpty else {
+            isError = "Please fill in all fields"
+            return false
+        }
     }
 }
 #Preview {
