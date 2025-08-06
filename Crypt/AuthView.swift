@@ -134,6 +134,8 @@ struct AuthView: View {
             isError = "Passwords do not match"
             return false
         }
+        isError = nil
+        return true
     }
 }
 #Preview {
