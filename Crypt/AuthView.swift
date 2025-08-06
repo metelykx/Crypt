@@ -146,15 +146,34 @@ struct AuthView: View {
     
     //function for validate passwords
     private func validatePassword() -> Bool {
-        guard !password.isEmpty && !repeatPass.isEmpty else {
-            isError = "Please fill in all fields"
+        // Проверяем все поля
+        guard !name.isEmpty else {
+            isError = "Please enter your name"
             return false
         }
         
+        guard !password.isEmpty else {
+            isError = "Please enter password"
+            return false
+        }
+        
+        guard !repeatPass.isEmpty else {
+            isError = "Please repeat password"
+            return false
+        }
+        
+        // Проверяем совпадение паролей
         guard password == repeatPass else {
             isError = "Passwords do not match"
             return false
         }
+        
+        // Проверяем минимальную длину пароля
+        guard password.count >= 6 else {
+            isError = "Password must be at least 6 characters"
+            return false
+        }
+        
         isError = nil
         return true
     }
