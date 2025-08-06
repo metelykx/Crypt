@@ -135,6 +135,24 @@ struct StartView: View {
             return
         }
         
+        let request = NSFetchRequest<Item>(entityName: "User")
+        request.predicate = NSPredicate(
+            format: "name == %@ AND password == %@",
+                name,
+                password
+            )
+        
+        //do request
+        let users = try managedObjectContext.fetch(request)
+        
+        //if user is empty. we can show error else our user can go there.
+        if users.isEmpty {
+            isError = "Invalid credentials"
+        } else {
+            isError = nil
+            isAuth = true
+        }
+        
     }
 }
 
