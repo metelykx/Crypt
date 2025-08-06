@@ -110,6 +110,7 @@ struct AuthView: View {
                             .foregroundColor(.red)
                     }
                     
+                    //-MARK: Button for authorization
                     ButtonView(size: geometry.size)
                         .onTapGesture {
                             authorization()
