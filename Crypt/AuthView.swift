@@ -70,6 +70,11 @@ struct AuthView: View {
                                     .foregroundStyle(colors)
                                     .font(.headline)
                                 SecureField("", text: $password)
+                                    .onChange(of: password) { _ in
+                                            if isError != nil {
+                                                isError = nil
+                                            }
+                                        }
                                 
                             }
                     .padding(.bottom)
@@ -83,7 +88,13 @@ struct AuthView: View {
                                 Text("Repeat")
                                     .foregroundStyle(colors)
                                     .font(.headline)
-                                SecureField("", text: $repeatPass) }.padding(.bottom)
+                                SecureField("", text: $repeatPass)
+                                    .onChange(of: repeatPass) { _ in
+                                            if isError != nil {
+                                                isError = nil
+                                            }
+                                        }
+                            }.padding(.bottom)
                                 .padding(.horizontal)
                                 .padding(.leading)
                                 .padding(.trailing)
