@@ -123,6 +123,10 @@ struct AuthView: View {
             print("Detailed error: \(nsError.userInfo)")
         }
     }
+    
+    private func validatePassword() {
+        
+    }
 }
 #Preview {
     AuthView()
