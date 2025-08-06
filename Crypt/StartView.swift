@@ -18,6 +18,7 @@ struct StartView: View {
     
     @State var name: String = ""
     @State var password: String = ""
+    @State var isError: String? = nil
     
    
     var body: some View {

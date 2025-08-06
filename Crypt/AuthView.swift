@@ -166,12 +166,7 @@ struct AuthView: View {
             isError = "Passwords do not match"
             return false
         }
-        
-        // Проверяем минимальную длину пароля
-        guard password.count >= 6 else {
-            isError = "Password must be at least 6 characters"
-            return false
-        }
+    
         
         isError = nil
         return true
