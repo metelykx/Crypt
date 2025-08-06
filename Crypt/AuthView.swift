@@ -20,6 +20,10 @@ struct AuthView: View {
         colorScheme == .dark ? .white : .black
     }
     
+    private var colorsText: Color {
+        colorScheme == .dark ? .black : .white
+    }
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -44,23 +48,24 @@ struct AuthView: View {
                         VStack {
                             HStack {
                                 Image(systemName: "person.fill")
-                                    .foregroundStyle(colors)
+                                    .foregroundStyle(colorsText)
                                 Text("Name")
-                                    .foregroundStyle(colors)
+                                    .foregroundStyle(colorsText)
                                     .font(.headline)
                                 TextField("", text: $name)
                                     .onChange(of: name) { _ in
                                         resetError()
                                     }
+                                    
                             }
                             .padding(.bottom)
                             .padding(.horizontal)
                             
                             HStack {
                                 Image(systemName: "lock.fill")
-                                    .foregroundStyle(colors)
+                                    .foregroundStyle(colorsText)
                                 Text("Password")
-                                    .foregroundStyle(colors)
+                                    .foregroundStyle(colorsText)
                                     .font(.headline)
                                 SecureField("", text: $password)
                                     .onChange(of: password) { _ in
@@ -72,9 +77,9 @@ struct AuthView: View {
                             
                             HStack {
                                 Image(systemName: "lock.circle.fill")
-                                    .foregroundStyle(colors)
+                                    .foregroundStyle(colorsText)
                                 Text("Repeat")
-                                    .foregroundStyle(colors)
+                                    .foregroundStyle(colorsText)
                                     .font(.headline)
                                 SecureField("", text: $repeatPass)
                                     .onChange(of: repeatPass) { _ in
