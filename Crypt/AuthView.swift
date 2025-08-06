@@ -108,6 +108,7 @@ struct AuthView: View {
         
         newItem.name = name
         newItem.password = password
+        newItem.repeatPass = repeatPass
     }
 }
 #Preview {
