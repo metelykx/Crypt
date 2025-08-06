@@ -26,6 +26,7 @@ struct AuthView: View {
     @State var password: String = ""
     @State var repeatPass: String = ""
     @State var isValid: Bool = false
+    @State var isError: String? = nil
     
     //-MARK: View
     var body: some View {
@@ -103,6 +104,8 @@ struct AuthView: View {
             }
         }.background(.primary)
     }
+    
+    //-MARK: Function
     private func authorization() {
         let newItem = Item(context: managedObjectContext)
         
