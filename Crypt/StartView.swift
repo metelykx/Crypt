@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct StartView: View {
     
@@ -98,7 +99,7 @@ struct StartView: View {
                        
                         
                         Button {
-                            print("Sign Up tapped")
+                            auth()
                         } label: {
                             Text("Sign In")
                                 .font(.headline)
@@ -122,9 +123,8 @@ struct StartView: View {
         }
     }
     
-    
+    //MARK: Functions
     private func auth() {
-        
         
         guard !name.isEmpty else {
             isError = "Name cannot be empty"
@@ -143,16 +143,18 @@ struct StartView: View {
             )
         
         //do request
-        let users = try managedObjectContext.fetch(request)
-        
-        //if user is empty. we can show error else our user can go there.
-        if users.isEmpty {
-            isError = "Invalid credentials"
-        } else {
-            isError = nil
-            isAuth = true
-        }
-        
+        do {
+          let users = try managedObjectContext.fetch(request)
+                
+          if users.isEmpty {
+             isError = "Invalid credentials"
+             } else {
+                isError = nil
+                isAuth = true
+             }
+            } catch {
+                isError = "Database error: \(error.localizedDescription)"
+            }
     }
 }
 
