@@ -19,6 +19,7 @@ struct StartView: View {
     @State var name: String = ""
     @State var password: String = ""
     @State var isError: String? = nil
+    @State var isAuth: Bool = false
     
    
     var body: some View {
@@ -115,6 +116,9 @@ struct StartView: View {
                 }
                 
             }
+        }
+        .navigationDestination(isPresented: $isAuth) {
+            MainView()
         }
     }
 }
