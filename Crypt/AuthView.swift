@@ -107,7 +107,7 @@ struct AuthView: View {
         }.background(.primary)
     }
     
-    //-MARK: Function
+    //-MARK: Functions
     private func authorization() {
         guard validatePassword() else { return }
         let newItem = Item(context: managedObjectContext)
