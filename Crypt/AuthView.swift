@@ -1,52 +1,45 @@
-//
-//  AuthView.swift
-//  Crypt
-//
-//  Created by Denis Ivaschenko on 04.08.2025.
-//
-
-//
-//  AuthView.swift
-//  CryptoGraf
-//
-//  Created by Denis Ivaschenko on 04.08.2025.
-//
 import SwiftUI
 import CoreData
+import CryptoKit
+
 struct AuthView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    
     @Environment(\.colorScheme) private var colorScheme
+    
+    // Состояния для ввода данных
+    @State private var name: String = ""
+    @State private var password: String = ""
+    @State private var repeatPass: String = ""
+    
+    // Состояния для обработки ошибок
+    @State private var isError: Bool = false
+    @State private var errorMessage: String = ""
+    
     private var colors: Color {
-        colorScheme == .dark ? .black : .white
+        colorScheme == .dark ? .white : .black
     }
     
-    @State var name: String = ""
-    @State var password: String = ""
-    @State var repeatPass: String = ""
-    @State var isValid: Bool = false
-    @State var isError: String? = nil
-    
-    //-MARK: View
     var body: some View {
         ZStack {
             GeometryReader { geometry in
                 
-                //MARK: -Circles
+                // MARK: - Circles
                 Circle1View(size: geometry.size)
                 Circle2View(size: geometry.size)
-                    
+                
                 VStack {
                     Spacer()
+                    
+                    // MARK: - Header
                     HeaderView(sizes: geometry.size)
+                    
+                    // MARK: - Input Fields
                     ZStack {
-                        
                         Rectangle()
                             .fill(Color.gray.opacity(0.2))
                             .frame(width: geometry.size.width/1.1, height: geometry.size.height/4)
                             .cornerRadius(20)
-                        
                         
                         VStack {
                             HStack {
@@ -56,130 +49,171 @@ struct AuthView: View {
                                     .foregroundStyle(colors)
                                     .font(.headline)
                                 TextField("", text: $name)
-                                
-                                
-                            }.padding(.bottom)
-                                .padding(.horizontal)
-                                .padding(.leading)
-                                .padding(.trailing)
-                            
+                                    .onChange(of: name) { _ in
+                                        resetError()
+                                    }
+                            }
+                            .padding(.bottom)
+                            .padding(.horizontal)
                             
                             HStack {
-                                Image(systemName: "lock.fill").foregroundStyle(colors)
+                                Image(systemName: "lock.fill")
+                                    .foregroundStyle(colors)
                                 Text("Password")
                                     .foregroundStyle(colors)
                                     .font(.headline)
                                 SecureField("", text: $password)
                                     .onChange(of: password) { _ in
-                                            if isError != nil {
-                                                isError = nil
-                                            }
-                                        }
-                                
+                                        resetError()
+                                    }
                             }
-                    .padding(.bottom)
-                                .padding(.horizontal)
-                                .padding(.leading)
-                                .padding(.trailing)
-                            
+                            .padding(.bottom)
+                            .padding(.horizontal)
                             
                             HStack {
-                                Image(systemName: "lock.circle.fill").foregroundStyle(colors)
+                                Image(systemName: "lock.circle.fill")
+                                    .foregroundStyle(colors)
                                 Text("Repeat")
                                     .foregroundStyle(colors)
                                     .font(.headline)
                                 SecureField("", text: $repeatPass)
                                     .onChange(of: repeatPass) { _ in
-                                            if isError != nil {
-                                                isError = nil
-                                            }
-                                        }
-                            }.padding(.bottom)
-                                .padding(.horizontal)
-                                .padding(.leading)
-                                .padding(.trailing)
+                                        resetError()
+                                    }
+                            }
+                            .padding(.bottom)
+                            .padding(.horizontal)
                             
-                            
-                        }
+                        } .padding(.bottom)
+                            .padding(.horizontal)
+                            .padding(.leading)
+                            .padding(.trailing)
                     }
-                    //-MARK: Mistakes
-                    if let error = isError {
-                        Text(error)
+                    
+                    // MARK: - Error Display
+                    if isError {
+                        Text(errorMessage)
                             .font(.callout)
                             .padding(.top)
                             .foregroundColor(.red)
+                            .transition(.opacity)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                    withAnimation {
+                                        isError = false
+                                    }
+                                }
+                            }
                     }
                     
-                    //-MARK: Button for authorization
-                    ButtonView(size: geometry.size)
-                        .onTapGesture {
-                            authorization()
-                        }
+                    // MARK: - Auth Button
+                    Button(action: authorization) {
+                        Text("Register")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(width: 200, height: 50)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .padding(.top, 20)
+                    }
                     
                     Spacer()
-                }.padding(.bottom, geometry.size.height * 0.15)
-        
+                }
+                .padding(.bottom, geometry.size.height * 0.15)
             }
-        }.background(.primary)
-    }
-    
-    //-MARK: Functions
-    
-    //function for authorization
-    private func authorization() {
-        guard validatePassword() else { return }
-        let newItem = Item(context: managedObjectContext)
-        
-        newItem.name = name
-        newItem.password = password
-        
-        do {
-            try managedObjectContext.save()
-        } catch {
-            print("Core Data save error: \(error)")
-            let nsError = error as NSError
-            print("Detailed error: \(nsError.userInfo)")
+        }
+        .background(.primary)
+        .onTapGesture {
+            hideKeyboard()
         }
     }
     
+    // MARK: - Functions
     
-    //function for validate passwords
-    private func validatePassword() -> Bool {
-        // Проверяем все поля
+    private func resetError() {
+        withAnimation {
+            isError = false
+        }
+    }
+    
+    private func showError(_ message: String) {
+        errorMessage = message
+        withAnimation {
+            isError = true
+        }
+    }
+    
+    private func authorization() {
+        // Валидация полей
         guard !name.isEmpty else {
-            isError = "Please enter your name"
-            return false
+            showError("Please enter your name")
+            return
         }
         
         guard !password.isEmpty else {
-            isError = "Please enter password"
-            return false
+            showError("Please enter password")
+            return
+        }
+        
+        guard password.count >= 8 else {
+            showError("Password must be at least 8 characters")
+            return
         }
         
         guard !repeatPass.isEmpty else {
-            isError = "Please repeat password"
-            return false
+            showError("Please repeat password")
+            return
         }
         
-        // Проверяем совпадение паролей
         guard password == repeatPass else {
-            isError = "Passwords do not match"
-            return false
+            showError("Passwords do not match")
+            return
         }
-    
         
-        isError = nil
-        return true
+        // Проверка существования пользователя
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            let existingUsers = try managedObjectContext.fetch(fetchRequest)
+            if !existingUsers.isEmpty {
+                showError("User with this name already exists")
+                return
+            }
+            
+            // Создание нового пользователя
+            let newItem = Item(context: managedObjectContext)
+            newItem.name = name
+            newItem.password = hashPassword(password)  // Храним хэш!
+            
+            try managedObjectContext.save()
+            
+            // Успешная регистрация
+            print("User registered successfully!")
+            
+        } catch {
+            showError("Registration failed: \(error.localizedDescription)")
+        }
+    }
+    
+    private func hashPassword(_ password: String) -> String {
+        let data = Data(password.utf8)
+        let hash = SHA256.hash(data: data)
+        return hash.compactMap { String(format: "%02x", $0) }.joined()
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
     }
 }
+
+// MARK: - Preview
 #Preview {
     AuthView()
-       
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
-
-
-
-
-
-
-
