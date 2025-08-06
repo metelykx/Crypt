@@ -92,10 +92,12 @@ struct AuthView: View {
                         }
                     }
                     //-MARK: Mistakes
-                    Text("Mistake")
-                        .font(.callout)
-                        .padding(.top)
-                        .foregroundStyle(colors)
+                    if let error = isError {
+                        Text(error)
+                            .font(.callout)
+                            .padding(.top)
+                            .foregroundColor(.red)
+                    }
                     ButtonView(size: geometry.size)
                     
                     Spacer()
