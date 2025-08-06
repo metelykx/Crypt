@@ -106,7 +106,7 @@ struct AuthView: View {
     private func authorization() {
         let newItem = Item(context: managedObjectContext)
         
-        
+        newItem.name = name
     }
 }
 #Preview {
