@@ -109,6 +109,14 @@ struct AuthView: View {
         newItem.name = name
         newItem.password = password
         newItem.repeatPass = repeatPass
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("Core Data save error: \(error)")
+            let nsError = error as NSError
+            print("Detailed error: \(nsError.userInfo)")
+        }
     }
 }
 #Preview {
