@@ -87,10 +87,14 @@ struct StartView: View {
                         }.padding(.top, -geometry.size.height / 50)
                         .padding(.top)
                         
-                        Text("Mistake")
-                            .font(.callout)
-                            .padding(.top)
-                            .foregroundStyle(colors)
+                        //MARK: Mistake
+                        if let error = isError {
+                            Text(error)
+                                .font(.callout)
+                                .padding(.top)
+                                .foregroundStyle(.red)
+                        }
+                       
                         
                         Button {
                             print("Sign Up tapped")
