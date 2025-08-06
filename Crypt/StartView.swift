@@ -124,10 +124,17 @@ struct StartView: View {
     
     
     private func auth() {
+        
+        
         guard !name.isEmpty else {
             isError = "Name cannot be empty"
             return
         }
+        guard !password.isEmpty else {
+            isError = "Password cannot be empty"
+            return
+        }
+        
     }
 }
 
