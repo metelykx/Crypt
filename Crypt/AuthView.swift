@@ -98,7 +98,11 @@ struct AuthView: View {
                             .padding(.top)
                             .foregroundColor(.red)
                     }
+                    
                     ButtonView(size: geometry.size)
+                        .onTapGesture {
+                            authorization()
+                        }
                     
                     Spacer()
                 }.padding(.bottom, geometry.size.height * 0.15)
@@ -108,7 +112,6 @@ struct AuthView: View {
     }
     
     //-MARK: Functions
-    
     
     //function for authorization
     private func authorization() {
