@@ -121,6 +121,14 @@ struct StartView: View {
             MainView()
         }
     }
+    
+    
+    private func auth() {
+        guard !name.isEmpty else {
+            isError = "Name cannot be empty"
+            return
+        }
+    }
 }
 
 #Preview {
