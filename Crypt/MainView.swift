@@ -13,8 +13,8 @@ struct MainView: View {
             StaticView()
                 .tabItem {
                     Label("Statistics", systemImage: "arrow.down.left.arrow.up.right.circle.fill")
-                    
                 }
+            
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.fill")
