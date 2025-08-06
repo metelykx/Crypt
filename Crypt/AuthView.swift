@@ -108,6 +108,9 @@ struct AuthView: View {
     }
     
     //-MARK: Functions
+    
+    
+    //function for authorization
     private func authorization() {
         guard validatePassword() else { return }
         let newItem = Item(context: managedObjectContext)
