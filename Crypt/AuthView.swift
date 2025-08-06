@@ -132,7 +132,6 @@ struct AuthView: View {
         
         newItem.name = name
         newItem.password = password
-        newItem.repeatPass = repeatPass
         
         do {
             try managedObjectContext.save()
