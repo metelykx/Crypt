@@ -103,6 +103,9 @@ struct AuthView: View {
             }
         }.background(.primary)
     }
+    private func authorization() {
+        
+    }
 }
 #Preview {
     AuthView()
