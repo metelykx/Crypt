@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct CreateRecordView: View {
+    
+    @Environment(\.managedObjectContext) var contexView
+    
+    @State var title: String = ""
+    
     var body: some View {
-        Text("ded")
+        VStack {
+            
+        }
     }
 }
 
