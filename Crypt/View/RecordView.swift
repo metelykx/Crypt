@@ -8,23 +8,29 @@
 import SwiftUI
 
 struct RecordView: View {
+    
     @State var isTrue = false
+    
     var body: some View {
-        VStack {
-            Text("Your Records")
-                .font(.title)
-                .padding()
-            Spacer()
-            
-            Button {
-                isTrue = true
-            } label: {
-                Text("Create a new record")
-            }.sheet(isPresented: $isTrue) {
-                CreateRecordView()
-            }
-
-
+        GeometryReader { geometry in
+            VStack {
+           
+                
+                Text("Your Records")
+                    .font(.title)
+                    .padding()
+                Spacer()
+                
+                Button {
+                    isTrue = true
+                } label: {
+                    Text("Create a new record")
+                }.sheet(isPresented: $isTrue) {
+                    CreateRecordView()
+                }
+                
+            }.frame(width: geometry.size.width, height: geometry.size.height)
+                .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
         }
     }
 }

@@ -6,3 +6,14 @@
 //
 
 import SwiftUI
+
+struct CreateRecordView: View {
+    var body: some View {
+        Text("ded")
+    }
+}
+
+
+#Preview {
+    CreateRecordView()
+}
