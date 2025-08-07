@@ -1,73 +1,94 @@
-//
-//  CreateRecordView.swift
-//  Crypt
-//
-//  Created by Denis Ivaschenko on 07.08.2025.
-//
-
 import SwiftUI
 
 struct CreateRecordView: View {
     
     @Environment(\.managedObjectContext) var contexView
+    @Environment(\.dismiss) var dismiss
     
     @State var title: String = ""
     @State var text: String = ""
-    @State var data: String = ""
+    @State var date: String = ""
+    
+    // Для автоматического скрытия клавиатуры
+    @FocusState private var focusedField: Field?
+    
+    enum Field {
+        case title, text, date
+    }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                ScrollView {
-                    VStack {
-                        Text("Create Record")
-                            .font(.title)
-                            .padding()
+        NavigationView {
+            Form {
+                Section(header: Text("Record Details")) {
+                    HStack {
+                        Image(systemName: "circle.hexagonpath.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30)
                         
-                            HStack {
-                                Image(systemName: "circle.hexagonpath.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width:geometry.size.width/10)
-                                
-                                Text("Title:")
-                                    .font(.title2)
-                                    .bold()
-                                TextField("", text: $title)
-                            }
+                        TextField("Title", text: $title)
+                            .focused($focusedField, equals: .title)
+                    }
+                    
+                    HStack(alignment: .top) {
+                        Image(systemName: "calendar.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30)
                         
-                        HStack {
-                            Image(systemName: "text.alignleft")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width:geometry.size.width/10)
-                            Text("Text:")
-                                .font(.title2)
-                                .bold()
-                            TextField("", text: $text)
-                        }
-                        
-                        HStack {
-                            Image(systemName: "calendar.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width:geometry.size.width/10)
-                            Text("Date:")
-                                .font(.title2)
-                                .bold()
-                            TextField("", text: $data)
-                        }
-                        
-                        
-                        
-                        Spacer()
-                    }.frame(width: geometry.size.width, height: geometry.size.height)
-                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+                        TextField("Date", text: $date)
+                            .focused($focusedField, equals: .date)
+                    }
+                }
+                
+                Section(header: Text("Content")) {
+                    TextEditor(text: $text)
+                        .focused($focusedField, equals: .text)
+                        .frame(minHeight: 200)
+                        .overlay(
+                            Group {
+                                if text.isEmpty {
+                                    Text("Enter your text here...")
+                                        .foregroundColor(.gray)
+                                        .padding(.top, 8)
+                                        .padding(.leading, 5)
+                                        .allowsHitTesting(false)
+                                }
+                            },
+                            alignment: .topLeading
+                        )
+                }
+            }
+            .navigationTitle("Create Record")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        saveRecord()
+                        dismiss()
+                    }
+                }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        focusedField = nil
+                    }
                 }
             }
         }
     }
+    
+    private func saveRecord() {
+        // Здесь будет логика сохранения в Core Data
+        print("Saving record: \(title)")
+    }
 }
+
 #Preview {
     CreateRecordView()
 }
