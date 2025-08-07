@@ -12,6 +12,8 @@ struct RecordView: View {
 
         VStack {
             Text("Your Records")
+                .font(.title)
+            
         }
     }
 }
