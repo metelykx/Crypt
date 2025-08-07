@@ -9,12 +9,18 @@ import SwiftUI
 
 struct RecordView: View {
     var body: some View {
-
         VStack {
             Text("Your Records")
                 .font(.title)
                 .padding()
             Spacer()
+            
+            Button {
+                print("de")
+            } label: {
+                Text("Create new record")
+            }
+
         }
     }
 }
