@@ -20,6 +20,8 @@ struct RecordView: View {
                 isTrue = true
             } label: {
                 Text("Create a new record")
+            }.sheet(isPresented: $isTrue) {
+                CreateRecordView()
             }
 
 
