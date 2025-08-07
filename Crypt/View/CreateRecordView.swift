@@ -23,6 +23,14 @@ struct CreateRecordView: View {
                         Text("Create Record")
                             .font(.title)
                             .padding()
+                        
+                            HStack {
+                                Image(systemName: "contextualmenu.and.cursorarrow")
+                                TextField("Title", text: $title)
+                            }
+                        
+                        
+                        
                         Spacer()
                     }.frame(width: geometry.size.width, height: geometry.size.height)
                         .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
