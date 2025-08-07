@@ -84,7 +84,7 @@ struct CreateRecordView: View {
     }
     
     private func saveRecord() {
-        // Здесь будет логика сохранения в Core Data
+        let records = Item(context: contexView)
         print("Saving record: \(title)")
     }
 }
