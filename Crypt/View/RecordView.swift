@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecordView: View {
+    @State var isTrue = false
     var body: some View {
         VStack {
             Text("Your Records")
@@ -15,11 +16,7 @@ struct RecordView: View {
                 .padding()
             Spacer()
             
-            Button {
-                print("de")
-            } label: {
-                Text("Create new record")
-            }
+           Actio
 
         }
     }
