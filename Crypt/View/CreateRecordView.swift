@@ -17,13 +17,14 @@ struct CreateRecordView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                
+            ZStack {
+                VStack {
+                    
+                }
             }
         }
     }
 }
-
 
 #Preview {
     CreateRecordView()
