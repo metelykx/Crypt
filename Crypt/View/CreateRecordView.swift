@@ -16,8 +16,10 @@ struct CreateRecordView: View {
     @State var data: Data?
     
     var body: some View {
-        VStack {
-            
+        GeometryReader { geometry in
+            VStack {
+                
+            }
         }
     }
 }
