@@ -12,6 +12,7 @@ struct CreateRecordView: View {
     @Environment(\.managedObjectContext) var contexView
     
     @State var title: String = ""
+    @State var text: String = ""
     
     var body: some View {
         VStack {
