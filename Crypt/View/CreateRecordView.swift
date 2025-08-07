@@ -21,7 +21,9 @@ struct CreateRecordView: View {
                 ScrollView {
                     VStack {
                         Text("Create Record")
-                        Spacer() 
+                            .font(.title)
+                            .padding()
+                        Spacer()
                     }.frame(width: geometry.size.width, height: geometry.size.height)
                         .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 }
