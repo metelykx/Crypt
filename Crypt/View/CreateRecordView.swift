@@ -36,6 +36,17 @@ struct CreateRecordView: View {
                                 TextField("", text: $title)
                             }
                         
+                        HStack {
+                            Image(systemName: "text.alignleft")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:geometry.size.width/10)
+                            Text("Text:")
+                                .font(.title2)
+                                .bold()
+                            TextField("", text: $text)
+                        }
+                        
                         
                         
                         Spacer()
