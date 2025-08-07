@@ -16,7 +16,12 @@ struct RecordView: View {
                 .padding()
             Spacer()
             
-           Actio
+            Button {
+                isTrue = true
+            } label: {
+                <#code#>
+            }
+
 
         }
     }
