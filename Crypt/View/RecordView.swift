@@ -28,6 +28,10 @@ struct RecordView: View {
                 }.sheet(isPresented: $isTrue) {
                     CreateRecordView()
                 }
+                .frame(width: .infinity, height: geometry.size.height/10)
+                .background(Color.accentColor)
+                .cornerRadius(20)
+                .foregroundStyle(.white)
                 
             }.frame(width: geometry.size.width, height: geometry.size.height)
                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
