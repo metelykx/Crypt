@@ -85,6 +85,8 @@ struct CreateRecordView: View {
     
     private func saveRecord() {
         let records = Item(context: contexView)
+        
+        
         print("Saving record: \(title)")
     }
 }
