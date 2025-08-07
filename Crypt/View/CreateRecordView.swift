@@ -13,7 +13,7 @@ struct CreateRecordView: View {
     
     @State var title: String = ""
     @State var text: String = ""
-    @State var data: Data?
+    @State var data: String = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -52,6 +52,10 @@ struct CreateRecordView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width:geometry.size.width/10)
+                            Text("Date:")
+                                .font(.title2)
+                                .bold()
+                            TextField("", text: $data)
                         }
                         
                         
