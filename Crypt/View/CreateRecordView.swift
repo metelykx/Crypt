@@ -25,8 +25,15 @@ struct CreateRecordView: View {
                             .padding()
                         
                             HStack {
-                                Image(systemName: "contextualmenu.and.cursorarrow")
-                                TextField("Title", text: $title)
+                                Image(systemName: "circle.hexagonpath.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width:geometry.size.width/10)
+                                
+                                Text("Title:")
+                                    .font(.title2)
+                                    .bold()
+                                TextField("", text: $title)
                             }
                         
                         
