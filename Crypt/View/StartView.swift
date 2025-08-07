@@ -10,7 +10,7 @@ import CoreData
 
 struct StartView: View {
     
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.managedObjectContext) var managedObjectContextt
     @Environment(\.colorScheme) private var colorScheme
     
     private var colors: Color {
@@ -135,7 +135,7 @@ struct StartView: View {
             return
         }
         
-        let request = NSFetchRequest<Item>(entityName: "User")
+        let request = NSFetchRequest<Item>(entityName: "Item")
         request.predicate = NSPredicate(
             format: "name == %@ AND password == %@",
                 name,
@@ -144,7 +144,7 @@ struct StartView: View {
         
         //do request
         do {
-          let users = try managedObjectContext.fetch(request)
+          let users = try managedObjectContextt.fetch(request)
                 
           if users.isEmpty {
              isError = "Invalid credentials"

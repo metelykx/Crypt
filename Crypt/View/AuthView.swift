@@ -4,7 +4,7 @@ import CryptoKit
 
 struct AuthView: View {
     
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.managedObjectContext) var managedObjectContextt
     @Environment(\.colorScheme) private var colorScheme
     
     // Состояния для ввода данных
@@ -180,18 +180,18 @@ struct AuthView: View {
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         do {
-            let existingUsers = try managedObjectContext.fetch(fetchRequest)
+            let existingUsers = try managedObjectContextt.fetch(fetchRequest)
             if !existingUsers.isEmpty {
                 showError("User with this name already exists")
                 return
             }
             
             // Создание нового пользователя
-            let newItem = Item(context: managedObjectContext)
+            let newItem = Item(context: managedObjectContextt)
             newItem.name = name
             newItem.password = hashPassword(password)  // Храним хэш!
             
-            try managedObjectContext.save()
+            try managedObjectContextt.save()
             
             // Успешная регистрация
             print("User registered successfully!")
