@@ -19,7 +19,7 @@ struct RecordView: View {
             Button {
                 isTrue = true
             } label: {
-                <#code#>
+                Text("Create a new record")
             }
 
 
