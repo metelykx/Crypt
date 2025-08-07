@@ -47,6 +47,13 @@ struct CreateRecordView: View {
                             TextField("", text: $text)
                         }
                         
+                        HStack {
+                            Image(systemName: "calendar.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:geometry.size.width/10)
+                        }
+                        
                         
                         
                         Spacer()
