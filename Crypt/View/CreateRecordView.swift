@@ -13,6 +13,7 @@ struct CreateRecordView: View {
     
     @State var title: String = ""
     @State var text: String = ""
+    @State var data: Data?
     
     var body: some View {
         VStack {
