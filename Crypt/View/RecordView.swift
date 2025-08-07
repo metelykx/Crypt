@@ -11,7 +11,7 @@ struct RecordView: View {
     var body: some View {
 
         VStack {
-            
+            Text("Your Records")
         }
     }
 }
